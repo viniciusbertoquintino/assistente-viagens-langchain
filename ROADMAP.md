@@ -16,7 +16,7 @@ Evoluir o assistente de viagens via terminal (LangChain + Azure OpenAI) com qual
   - Pronto quando: `main` possui README mínimo e primeiro commit.
 - [x] **AV.01** `app.py` funcional com chat no terminal.
   - Pronto quando: assistente responde perguntas de viagem.
-- [ ] **AV.02** Criar `pyproject.toml` e migrar para `uv`.
+- [x] **AV.02** Criar `pyproject.toml` e migrar para `uv`.
   - Pronto quando: `uv sync` instala dependências do zero.
 - [ ] **AV.03** Criar estrutura `app/`, `tests/`.
   - Pronto quando: imports funcionam sem hacks de path.

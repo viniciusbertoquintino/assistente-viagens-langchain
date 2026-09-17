@@ -24,8 +24,8 @@ Um assistente inteligente de viagens construído com LangChain de forma **simple
 | Projeto | Assistente de Viagens com LangChain |
 | ID prefixo | AV |
 | Status | Funcional (em evolução) |
-| Última etapa concluída | AV.01 — chat no terminal |
-| Próxima etapa | AV.02 — `pyproject.toml` e `uv` |
+| Última etapa concluída | AV.02 — `pyproject.toml` e `uv` |
+| Próxima etapa | AV.03 — estrutura `app/` e `tests/` |
 | Superfície | Terminal |
 
 ## Roadmap
@@ -43,7 +43,7 @@ Fases em [`ROADMAP.md`](./ROADMAP.md): Base, Refatoração, Qualidade, Produçã
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Python 3.8+**: Linguagem principal
+- **Python 3.12+**: Linguagem principal
 - **LangChain OpenAI**: Integração simples com modelos OpenAI
 - **OpenAI GPT-4o-mini**: Modelo de linguagem (temperatura: 0.3)
 - **python-dotenv**: Gerenciamento de variáveis de ambiente
@@ -52,8 +52,9 @@ Fases em [`ROADMAP.md`](./ROADMAP.md): Base, Refatoração, Qualidade, Produçã
 
 ## 📋 Pré-requisitos
 
-- Python 3.8 ou superior
-- Conta OpenAI com API key
+- Python 3.12 ou superior
+- [uv](https://docs.astral.sh/uv/) instalado
+- Conta Azure OpenAI com credenciais configuradas
 - Conexão com a internet
 
 ## 🛠️ Instalação
@@ -61,36 +62,24 @@ Fases em [`ROADMAP.md`](./ROADMAP.md): Base, Refatoração, Qualidade, Produçã
 1. **Clone o repositório**
    ```bash
    git clone <url-do-repositorio>
-   cd "Assistente de Viagens com LangChain"
+   cd assistente-viagens-langchain
    ```
 
-2. **Crie um ambiente virtual**
+2. **Instale as dependências**
    ```bash
-   python -m venv venv
-   # No Windows:
-   venv\Scripts\activate
-   # No Linux/Mac:
-   source venv/bin/activate
+   uv sync
    ```
 
-3. **Instale as dependências**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure a API Key da OpenAI**
+3. **Configure as credenciais Azure OpenAI**
    
-   Crie um arquivo `.env` na raiz do projeto:
-   ```env
-   OPENAI_API_KEY=sua_chave_openai_aqui
-   ```
+   Crie um arquivo `.env` na raiz do projeto com as variáveis necessárias para o Azure OpenAI.
 
 ## 🎯 Como Usar
 
 ### Executando o Assistente
 
 ```bash
-python app.py
+uv run python app.py
 ```
 
 ### Interface do Programa
@@ -136,11 +125,12 @@ Você: sair
 ## 📁 Estrutura do Projeto
 
 ```
-Assistente de Viagens com LangChain/
-├── app.py                 # Aplicação principal (54 linhas)
-├── requirements.txt       # Dependências Python
-├── .env                  # Variáveis de ambiente (criar)
-└── README.md            # Este arquivo
+assistente-viagens-langchain/
+├── app.py                 # Aplicação principal
+├── pyproject.toml         # Metadados e dependências do projeto
+├── uv.lock                # Lockfile reproduzível (uv)
+├── .env                   # Variáveis de ambiente (criar)
+└── README.md              # Este arquivo
 ```
 
 ## 🔧 Como Funciona (Análise do Código Simplificado)
@@ -206,13 +196,14 @@ except Exception as erro:
 - **Temperatura**: `0.3` (mais consistente e previsível)
 - **Sem histórico**: Cada pergunta é independente (mais simples)
 
-### Dependências Simplificadas
+### Dependências
+
+Gerenciadas via [`pyproject.toml`](./pyproject.toml) e instaladas com `uv sync`:
+
 ```
 langchain-openai
 python-dotenv
 ```
-
-> **Vantagem**: Menos dependências = instalação mais rápida e menos conflitos!
 
 ## 🚨 Solução de Problemas
 
@@ -231,7 +222,7 @@ ModuleNotFoundError: No module named 'langchain_openai'
 ```
 **Solução**: Execute:
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ### Erro: "Connection error"
@@ -250,8 +241,8 @@ pip install -r requirements.txt
 ## 📊 Estatísticas do Projeto
 
 - **Linhas de Código**: 54 linhas (simplificado!)
-- **Dependências**: 2 pacotes (reduzido de 4!)
-- **Tempo de Setup**: ~2 minutos (mais rápido!)
+- **Gerenciador de pacotes**: uv
+- **Tempo de Setup**: ~2 minutos
 - **Modelo**: GPT-4o-mini
 - **Interface**: Terminal/Console com emojis
 - **Complexidade**: Iniciante-friendly
