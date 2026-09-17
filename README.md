@@ -2,6 +2,36 @@
 
 Um assistente inteligente de viagens construído com LangChain de forma **simples e didática**. O assistente funciona através de uma interface de chat no terminal e ajuda usuários a planejar viagens usando inteligência artificial.
 
+> Status: funcional — evolução incremental pelo [`ROADMAP.md`](./ROADMAP.md).
+
+## O que este projeto prova
+
+- integração LangChain com Azure OpenAI;
+- chat conversacional especializado em viagens;
+- código didático e acessível para iniciantes;
+- base para evolução com testes e estrutura modular.
+
+## O que **não** é
+
+- Agência de viagens ou sistema de reservas
+- Aplicativo mobile ou web em produção
+- Assistente com histórico persistente (ainda)
+
+## Estado atual
+
+| Item | Valor |
+|---|---|
+| Projeto | Assistente de Viagens com LangChain |
+| ID prefixo | AV |
+| Status | Funcional (em evolução) |
+| Última etapa concluída | AV.01 — chat no terminal |
+| Próxima etapa | AV.02 — `pyproject.toml` e `uv` |
+| Superfície | Terminal |
+
+## Roadmap
+
+Fases em [`ROADMAP.md`](./ROADMAP.md): Base, Refatoração, Qualidade, Produção.
+
 ## ✨ Funcionalidades
 
 - **Chat Interativo no Terminal**: Interface conversacional simples e direta
